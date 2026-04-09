@@ -10,11 +10,17 @@ export const getBrandHook = () => {
     return brands
 }
 export const getSingleBrandHook = (brandId) => {
-    const [brand, setBrand] = useState(null);
+    const [brand, setBrand] = useState(undefined);
     useEffect(() => {
-        getSingleBrand(brandId).then(setBrand);
-        console.log("hook worked: ", brand)
-    }, []);
+        if (!brandId) {
+            setBrand(null);
+            return;
+        }
+
+        getSingleBrand(brandId)
+            .then(setBrand)
+            .catch(() => setBrand(null));
+    }, [brandId]);
     return brand
 }
 export const getCommentHook = () => {

@@ -9,7 +9,8 @@ import {
   Pen,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useFeatures } from "../hooks/variablehook.js";
+import { useFeatures } from "../hooks/variableHook.js";
+import PortfolioMedia from "../components/PortfolioMedia";
 export default function Home() {
   const { videos, brands, visuals } = useFeatures();
   const [isVisible, setIsVisible] = useState(false);
@@ -147,7 +148,7 @@ export default function Home() {
                   transitionDelay: `${index * 100}ms`,
                 }}
               >
-                <img
+                <PortfolioMedia
                   src={work.image}
                   alt={work.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

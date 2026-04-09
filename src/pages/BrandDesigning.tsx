@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {getBrandHook} from "../hooks/fetchhook.js"
+import { getBrandHook } from "../hooks/fetchHook.js";
+import PortfolioMedia from "../components/PortfolioMedia";
 interface Logo {
-  _id: number;
+  _id: string;
   title: string;
   image: string;
   variations: string[];
@@ -12,8 +12,7 @@ interface Logo {
 }
 
 export default function BrandDesigning() {
-  const [selectedLogo, setSelectedLogo] = useState<Logo | null>(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const logos: Logo[] = [
   //   {
   //     id: 1,
@@ -70,8 +69,7 @@ export default function BrandDesigning() {
   //     ],
   //   },
   // ];
-  const logos: Logo[] = getBrandHook()
- console.log("brand main: ", getBrandHook())
+  const logos: Logo[] = getBrandHook();
   // const brandIdentities = [
   //   {
   //     id: 1,
@@ -129,11 +127,11 @@ export default function BrandDesigning() {
             {logos.map((logo) => (
               <button
                 key={logo._id}
-                onClick={()=>navigate(`/brand-designing/${logo._id}`)}
+                onClick={() => navigate(`/brand-designing/${logo._id}`)}
                 // onClick={() => setSelectedLogo(logo)}
                 className="group relative aspect-square rounded-2xl overflow-hidden bg-white border-2 border-gray-100 hover:border-gray-900 transition-all duration-500 hover:scale-[1.02]"
               >
-                <img
+                <PortfolioMedia
                   src={logo.image}
                   alt={logo.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
