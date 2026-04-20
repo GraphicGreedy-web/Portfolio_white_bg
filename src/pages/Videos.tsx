@@ -1,63 +1,15 @@
 import { Play } from "lucide-react";
 import { getVideoHook } from "../hooks/fetchHook.js";
 interface Video {
-  id: number;
+  _id: string;
   title: string;
   category: string;
   thumbnail: string;
   duration: string;
+  link?: string;
 }
 export default function Videos() {
-  console.log("video main: ", getVideoHook());
-  const videos: Video[] = [
-    {
-      id: 1,
-      title: "Brand Story: Luxe Fashion",
-      category: "Brand Film",
-      thumbnail: "https://youtu.be/UzvswBBTIZ8",
-      duration: "2:30",
-    },
-    {
-      id: 2,
-      title: "Product Launch Campaign",
-      category: "Commercial",
-      thumbnail:
-        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
-      duration: "1:45",
-    },
-    {
-      id: 3,
-      title: "Motion Graphics Reel",
-      category: "Motion Design",
-      thumbnail:
-        "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
-      duration: "3:15",
-    },
-    {
-      id: 4,
-      title: "Event Highlight Video",
-      category: "Documentary",
-      thumbnail:
-        "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
-      duration: "4:20",
-    },
-    {
-      id: 5,
-      title: "Social Media Campaign",
-      category: "Digital Content",
-      thumbnail:
-        "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
-      duration: "0:45",
-    },
-    {
-      id: 6,
-      title: "Corporate Identity Video",
-      category: "Corporate",
-      thumbnail:
-        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
-      duration: "2:00",
-    },
-  ];
+  const videos = getVideoHook() as Video[];
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
@@ -78,7 +30,7 @@ export default function Videos() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {videos.map((video, index) => (
               <button
-                key={video.id}
+                key={video._id}
                 className="group relative aspect-video rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-all duration-500"
                 style={{
                   transitionDelay: `${index * 50}ms`,
@@ -155,7 +107,7 @@ export default function Videos() {
             </div>
             <div className="relative aspect-video rounded-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={videos[0]?.thumbnail || ""}
                 alt="Video production"
                 className="w-full h-full object-cover"
               />

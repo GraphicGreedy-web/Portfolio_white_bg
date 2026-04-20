@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { getVisualCommHook } from "../hooks/fetchHook.js";
 interface Poster {
-  id: number;
+  _id: string;
   title: string;
   category: string;
   image: string;
@@ -10,65 +10,7 @@ interface Poster {
 
 export default function VisualCommunication() {
   const [selectedPoster, setSelectedPoster] = useState<Poster | null>(null);
-  console.log("poster main: ", getVisualCommHook());
-  const posters: Poster[] = [
-    {
-      id: 1,
-      title: "Music Festival 2024",
-      category: "Event",
-      image:
-        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 2,
-      title: "Art Exhibition",
-      category: "Culture",
-      image:
-        "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 3,
-      title: "Tech Summit",
-      category: "Conference",
-      image:
-        "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 4,
-      title: "Fashion Week",
-      category: "Fashion",
-      image:
-        "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 5,
-      title: "Design Conference",
-      category: "Design",
-      image:
-        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 6,
-      title: "Food Festival",
-      category: "Culinary",
-      image:
-        "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 7,
-      title: "Photography Exhibition",
-      category: "Art",
-      image:
-        "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: 8,
-      title: "Innovation Summit",
-      category: "Business",
-      image:
-        "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-  ];
+  const posters = getVisualCommHook() as Poster[];
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
@@ -89,7 +31,7 @@ export default function VisualCommunication() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {posters.map((poster, index) => (
               <button
-                key={poster.id}
+                key={poster._id}
                 onClick={() => setSelectedPoster(poster)}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-all duration-500"
                 style={{
