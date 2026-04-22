@@ -8,17 +8,6 @@ type PortfolioMediaProps = {
 };
 
 const INSTAGRAM_HOSTS = ["instagram.com", "www.instagram.com"];
-const INSTAGRAM_FALLBACK_IMAGES = [
-  "/images/logos/brand-design-1.svg",
-  "/images/logos/brand-design-2.svg",
-  "/images/logos/brand-design-3.svg",
-  "/images/logos/brand-design-4.svg",
-  "/images/logos/brand-design-5.svg",
-  "/images/logos/brand-design-6.svg",
-  "/images/logos/brand-design-7.svg",
-  "/images/logos/brand-design-8.svg",
-  "/images/logos/brand-design-9.svg",
-];
 
 export const isInstagramPostUrl = (src: string) => {
   try {
@@ -39,13 +28,6 @@ const getInstagramThumbnailUrl = (src: string) => {
   if (!apiUrl) return "";
 
   return `${apiUrl}/api/instagram/thumbnail?url=${encodeURIComponent(src)}`;
-};
-
-const getInstagramFallbackImage = (alt: string) => {
-  const postNumber = alt.match(/\d+/)?.[0];
-  const index = postNumber ? Number(postNumber) - 1 : 0;
-
-  return INSTAGRAM_FALLBACK_IMAGES[index] || INSTAGRAM_FALLBACK_IMAGES[0];
 };
 
 export default function PortfolioMedia({
@@ -82,7 +64,7 @@ export default function PortfolioMedia({
   if (isInstagramPostUrl(src)) {
     return (
       <SmartImage
-        src={instagramThumbnail || getInstagramFallbackImage(alt)}
+        src={instagramThumbnail}
         alt={alt}
         className={className}
       />

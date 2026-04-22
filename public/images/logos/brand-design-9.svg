@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
-  <rect width="900" height="900" fill="#f1f5f9"/>
-  <path d="M250 650 450 210 650 650h-95l-38-90H383l-38 90z" fill="#0f172a"/>
-  <path d="M415 485h70l-35-84z" fill="#f1f5f9"/>
-  <text x="450" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#0f172a">ATLAS</text>
-</svg>

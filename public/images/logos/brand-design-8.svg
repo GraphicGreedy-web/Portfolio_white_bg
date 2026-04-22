@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
-  <rect width="900" height="900" fill="#fffbeb"/>
-  <path d="M450 180 605 335 450 490 295 335z" fill="#92400e"/>
-  <path d="M450 410 605 565 450 720 295 565z" fill="#d97706"/>
-  <text x="450" y="355" text-anchor="middle" font-family="Georgia, serif" font-size="46" fill="#fffbeb">B</text>
-</svg>

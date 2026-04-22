@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
-  <rect width="900" height="900" fill="#eef2ff"/>
-  <path d="M230 310h440v95H230zM230 500h440v95H230z" fill="#3730a3"/>
-  <path d="M340 210h95v480h-95zM530 210h95v480h-95z" fill="#6366f1"/>
-  <text x="450" y="775" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" font-weight="700" fill="#3730a3">GRID</text>
-</svg>

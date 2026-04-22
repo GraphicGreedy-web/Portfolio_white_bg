@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
-  <rect width="900" height="900" fill="#ecfeff"/>
-  <rect x="250" y="230" width="400" height="260" rx="42" fill="#0f766e"/>
-  <path d="M320 555h260v46H320z" fill="#0f766e"/>
-  <text x="450" y="715" text-anchor="middle" font-family="Verdana, sans-serif" font-size="54" font-weight="700" fill="#0f766e">PIXEL</text>
-</svg>

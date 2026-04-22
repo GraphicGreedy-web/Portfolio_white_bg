@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
-  <rect width="900" height="900" fill="#fdf2f8"/>
-  <path d="M450 170 690 450 450 730 210 450z" fill="#9d174d"/>
-  <path d="M450 295 585 450 450 605 315 450z" fill="#fdf2f8"/>
-  <text x="450" y="468" text-anchor="middle" font-family="Georgia, serif" font-size="58" fill="#9d174d">LUX</text>
-</svg>

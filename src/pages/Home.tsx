@@ -52,40 +52,6 @@ export default function Home() {
     },
   ];
 
-  // const featuredWork = [
-  //   {
-  //     id: 1,
-  //     title: "Luxe Brand Identity",
-  //     category: "Branding",
-  //     image:
-  //       "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
-  //     link: "/brand-designing",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Modern Logo Suite",
-  //     category: "Logo",
-  //     image:
-  //       "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
-  //     link: "/brand-designing",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Campaign Posters",
-  //     category: "Poster",
-  //     image:
-  //       "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
-  //     link: "/visual-communication",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Brand Film",
-  //     category: "Video",
-  //     image:
-  //       "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
-  //     link: "/videos",
-  //   },
-  // ];
   const featuredWorks = [
     brands[0] && {
       ...brands[0],
