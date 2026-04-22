@@ -154,3 +154,57 @@ select:focus {
   text-align: center !important;
   text-decoration: none !important;
 }
+
+.image-loader-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.06), rgba(17, 24, 39, 0.02)),
+    #f3f4f6;
+}
+
+.image-loader-shimmer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.78) 50%,
+      transparent 65%,
+      transparent 100%
+    );
+  transform: translateX(-100%);
+  animation: imageShimmer 1.25s ease-in-out infinite;
+}
+
+.image-loader-img {
+  opacity: 0;
+  transition: opacity 420ms ease, transform 700ms ease;
+}
+
+.image-loader-img-loaded {
+  opacity: 1;
+}
+
+.image-loader-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes imageShimmer {
+  to {
+    transform: translateX(100%);
+  }
+}

@@ -1,5 +1,6 @@
 import { Play } from "lucide-react";
 import { getVideoHook } from "../hooks/fetchHook.js";
+import SmartImage from "../components/SmartImage";
 interface Video {
   _id: string;
   title: string;
@@ -36,7 +37,7 @@ export default function Videos() {
                   transitionDelay: `${index * 50}ms`,
                 }}
               >
-                <img
+                <SmartImage
                   src={video.thumbnail}
                   alt={video.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -106,7 +107,7 @@ export default function Videos() {
               </a>
             </div>
             <div className="relative aspect-video rounded-2xl overflow-hidden">
-              <img
+              <SmartImage
                 src={videos[0]?.thumbnail || ""}
                 alt="Video production"
                 className="w-full h-full object-cover"

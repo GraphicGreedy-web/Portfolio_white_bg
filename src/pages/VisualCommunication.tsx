@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getVisualCommHook } from "../hooks/fetchHook.js";
+import SmartImage from "../components/SmartImage";
 interface Poster {
   _id: string;
   title: string;
@@ -37,7 +38,7 @@ export default function VisualCommunication() {
                   transitionDelay: `${index * 50}ms`,
                 }}
               >
-                <img
+                <SmartImage
                   src={poster.image}
                   alt={poster.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

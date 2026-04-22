@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { getSingleVisualCommHook } from "../hooks/fetchHook.js";
+import SmartImage from "../components/SmartImage";
 
 interface Poster {
   _id: string;
@@ -75,7 +76,7 @@ export default function VisualCommunicationCard() {
 
         <div className="mt-10 rounded-[2rem] border border-gray-200 bg-gray-50 p-4 lg:p-8 shadow-sm">
           {poster.image ? (
-            <img
+            <SmartImage
               src={poster.image}
               alt={poster.title || "Visual communication image"}
               className="mx-auto max-h-[78vh] w-full rounded-[1.5rem] bg-white object-contain"

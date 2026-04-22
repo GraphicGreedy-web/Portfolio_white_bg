@@ -15,6 +15,7 @@ import {
   videoRoute,
   visualCommRoute,
 } from "../api";
+import SmartImage from "../components/SmartImage";
 
 type CmsType = "logos" | "visuals" | "videos";
 
@@ -239,7 +240,7 @@ export default function CMSManager() {
         />
       </label>
       {(state.preview || state.image) && (
-        <img
+        <SmartImage
           src={state.preview || state.image}
           alt={state.title || "Current media"}
           className="h-40 w-full rounded-xl bg-gray-100 object-contain"
@@ -279,7 +280,7 @@ export default function CMSManager() {
               key={item._id}
               className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
             >
-              <img
+              <SmartImage
                 src={getItemImage(item)}
                 alt={item.title}
                 className="h-56 w-full bg-gray-100 object-cover"

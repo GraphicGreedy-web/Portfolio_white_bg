@@ -1,4 +1,5 @@
 import { Award, Users, Zap, Heart } from 'lucide-react';
+import SmartImage from '../components/SmartImage';
 
 export default function About() {
   const skills = [
@@ -67,7 +68,7 @@ export default function About() {
             </div>
             <div className="order-1 lg:order-2">
               <div className="relative aspect-square rounded-2xl overflow-hidden">
-                <img
+                <SmartImage
                   src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   alt="Designer workspace"
                   className="w-full h-full object-cover"

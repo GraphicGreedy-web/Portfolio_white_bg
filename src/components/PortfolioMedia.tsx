@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SmartImage from "./SmartImage";
 
 type PortfolioMediaProps = {
   src: string;
@@ -80,7 +81,7 @@ export default function PortfolioMedia({
 
   if (isInstagramPostUrl(src)) {
     return (
-      <img
+      <SmartImage
         src={instagramThumbnail || getInstagramFallbackImage(alt)}
         alt={alt}
         className={className}
@@ -88,5 +89,5 @@ export default function PortfolioMedia({
     );
   }
 
-  return <img src={src} alt={alt} className={className} />;
+  return <SmartImage src={src} alt={alt} className={className} />;
 }
