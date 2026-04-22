@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getBrand, getComment, getContact, getSingleBrand, getVideo, getVisualComm } from "../components/fetchRoutes";
+import { getBrand, getComment, getContact, getSingleBrand, getSingleVisualComm, getVideo, getVisualComm } from "../components/fetchRoutes";
 import { useState } from "react";
 export const getBrandHook = () => {
     const [brands, setBrands] = useState([]);
@@ -52,10 +52,17 @@ export const getVisualCommHook = () => {
     }, []);
     return visualComms
 }
-// useEffect(() => {
-//     getBrand()
-//     getComment()
-//     getContact()
-//     getVideo()
-//     getVisualComm()
-// }, {})
+export const getSingleVisualCommHook = (visualId) => {
+    const [visualComm, setVisualComm] = useState(undefined);
+    useEffect(() => {
+        if (!visualId) {
+            setVisualComm(null);
+            return;
+        }
+
+        getSingleVisualComm(visualId)
+            .then(setVisualComm)
+            .catch(() => setVisualComm(null));
+    }, [visualId]);
+    return visualComm
+}

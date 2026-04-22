@@ -13,92 +13,7 @@ interface Logo {
 
 export default function BrandDesigning() {
   const navigate = useNavigate();
-  // const logos: Logo[] = [
-  //   {
-  //     id: 1,
-  //     title: 'Minimal Tech Co.',
-  //     image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     variations: [
-  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //     colors: ['#000000', '#FFFFFF', '#F5F5F5'],
-  //     typography: 'Inter, Sans-serif',
-  //     mockups: [
-  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Artisan Coffee',
-  //     image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     variations: [
-  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //     colors: ['#6B4423', '#E8D5C4', '#2C1810'],
-  //     typography: 'Playfair Display, Serif',
-  //     mockups: [
-  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Urban Studio',
-  //     image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     variations: [
-  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //     colors: ['#1A1A1A', '#E63946', '#FFFFFF'],
-  //     typography: 'Montserrat, Sans-serif',
-  //     mockups: [
-  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'Eco Brand',
-  //     image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     variations: [
-  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //     colors: ['#2D5016', '#A8D5BA', '#F4F4F4'],
-  //     typography: 'Lato, Sans-serif',
-  //     mockups: [
-  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //   },
-  // ];
   const logos: Logo[] = getBrandHook();
-  // const brandIdentities = [
-  //   {
-  //     id: 1,
-  //     title: 'Luxe Fashion House',
-  //     description: 'A sophisticated brand identity for a high-end fashion retailer, combining timeless elegance with contemporary minimalism.',
-  //     story: 'Luxe Fashion House approached us to create a brand that would resonate with discerning customers seeking quality and exclusivity.',
-  //     colors: ['#000000', '#FFFFFF', '#D4AF37'],
-  //     typography: 'Playfair Display for headings, Inter for body text',
-  //     image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  //     mockups: [
-  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Velocity Tech',
-  //     description: 'A dynamic brand identity for a cutting-edge technology startup focused on AI and machine learning solutions.',
-  //     story: 'Velocity Tech needed a brand that conveyed innovation, speed, and reliability in the competitive tech landscape.',
-  //     colors: ['#0A0E27', '#00E5FF', '#FFFFFF'],
-  //     typography: 'Inter for all typography with various weights',
-  //     image: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  //     mockups: [
-  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //     ],
-  //   },
-  // ];
-
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
       <section className="py-16 lg:py-24 px-6 lg:px-12">
@@ -132,8 +47,8 @@ export default function BrandDesigning() {
                 className="group relative aspect-square rounded-2xl overflow-hidden bg-white border-2 border-gray-100 hover:border-gray-900 transition-all duration-500 hover:scale-[1.02]"
               >
                 <PortfolioMedia
-                  src={logo.image}
-                  alt={logo.title}
+                  src={logo?.image}
+                  alt={logo?.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">

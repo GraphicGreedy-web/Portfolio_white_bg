@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#f5f3ff"/>
+  <path d="M450 185 650 530H250z" fill="#312e81"/>
+  <path d="M450 305 550 480H350z" fill="#f5f3ff"/>
+  <text x="450" y="700" text-anchor="middle" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#312e81">NOVA</text>
+</svg>

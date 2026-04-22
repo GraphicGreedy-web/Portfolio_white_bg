@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 type PortfolioMediaProps = {
   src: string;
   alt: string;
@@ -5,6 +7,17 @@ type PortfolioMediaProps = {
 };
 
 const INSTAGRAM_HOSTS = ["instagram.com", "www.instagram.com"];
+const INSTAGRAM_FALLBACK_IMAGES = [
+  "/images/logos/brand-design-1.svg",
+  "/images/logos/brand-design-2.svg",
+  "/images/logos/brand-design-3.svg",
+  "/images/logos/brand-design-4.svg",
+  "/images/logos/brand-design-5.svg",
+  "/images/logos/brand-design-6.svg",
+  "/images/logos/brand-design-7.svg",
+  "/images/logos/brand-design-8.svg",
+  "/images/logos/brand-design-9.svg",
+];
 
 export const isInstagramPostUrl = (src: string) => {
   try {
@@ -20,19 +33,57 @@ export const getInstagramEmbedUrl = (src: string) => {
   return `${trimmedSrc}/embed/captioned`;
 };
 
+const getInstagramThumbnailUrl = (src: string) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  if (!apiUrl) return "";
+
+  return `${apiUrl}/api/instagram/thumbnail?url=${encodeURIComponent(src)}`;
+};
+
+const getInstagramFallbackImage = (alt: string) => {
+  const postNumber = alt.match(/\d+/)?.[0];
+  const index = postNumber ? Number(postNumber) - 1 : 0;
+
+  return INSTAGRAM_FALLBACK_IMAGES[index] || INSTAGRAM_FALLBACK_IMAGES[0];
+};
+
 export default function PortfolioMedia({
   src,
   alt,
   className = "",
 }: PortfolioMediaProps) {
+  const [instagramThumbnail, setInstagramThumbnail] = useState("");
+
+  useEffect(() => {
+    if (!isInstagramPostUrl(src)) return;
+
+    const thumbnailUrl = getInstagramThumbnailUrl(src);
+    if (!thumbnailUrl) return;
+
+    let isMounted = true;
+    setInstagramThumbnail("");
+
+    fetch(thumbnailUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error("Thumbnail request failed");
+        return response.json();
+      })
+      .then((data) => {
+        if (isMounted) setInstagramThumbnail(data.image || "");
+      })
+      .catch(() => {});
+
+    return () => {
+      isMounted = false;
+    };
+  }, [src]);
+
   if (isInstagramPostUrl(src)) {
     return (
-      <iframe
-        src={getInstagramEmbedUrl(src)}
-        title={alt}
+      <img
+        src={instagramThumbnail || getInstagramFallbackImage(alt)}
+        alt={alt}
         className={className}
-        loading="lazy"
-        allowTransparency={true}
       />
     );
   }

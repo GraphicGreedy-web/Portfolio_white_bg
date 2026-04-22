@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#f0fdf4"/>
+  <path d="M285 610V290h95l70 170 70-170h95v320h-78V408l-62 151h-50l-62-151v202z" fill="#166534"/>
+  <text x="450" y="735" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#166534">MONO</text>
+</svg>

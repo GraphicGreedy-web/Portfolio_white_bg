@@ -86,7 +86,23 @@ export default function Home() {
   //     link: "/videos",
   //   },
   // ];
-  const featuredWorks = [videos[0], brands[0], visuals[0]].filter(Boolean);
+  const featuredWorks = [
+    brands[0] && {
+      ...brands[0],
+      image: brands[0].image,
+      link: `/brand-designing/${brands[0]._id}`,
+    },
+    visuals[0] && {
+      ...visuals[0],
+      image: visuals[0].image,
+      link: `/visual-communication/${visuals[0]._id}`,
+    },
+    videos[0] && {
+      ...videos[0],
+      image: videos[0].thumbnail,
+      link: videos[0].link || "/videos",
+    },
+  ].filter(Boolean);
   if (!featuredWorks.length) return null   // or loader
   console.log("feayres: ", featuredWorks);
   return (
@@ -142,7 +158,7 @@ export default function Home() {
             {featuredWorks.map((work, index) => (
               <Link
                 key={work._id}
-                // to={work.link}
+                to={work.link}
                 className="group relative overflow-hidden rounded-2xl aspect-[4/3] transition-all duration-500 hover:scale-[1.02]"
                 style={{
                   transitionDelay: `${index * 100}ms`,

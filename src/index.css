@@ -64,3 +64,93 @@ textarea:focus,
 select:focus {
   outline: none;
 }
+
+.mobile-menu-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+.mobile-menu-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 80px !important;
+  padding: 0 24px !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  background: #ffffff !important;
+}
+
+.mobile-menu-logo {
+  color: #111827 !important;
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+}
+
+.mobile-menu-close {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #111827 !important;
+  padding: 0 !important;
+}
+
+.mobile-menu-links {
+  display: flex !important;
+  flex: 1 !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 24px !important;
+  background: #ffffff !important;
+}
+
+.mobile-menu-link {
+  display: block !important;
+  width: 100% !important;
+  border-radius: 14px !important;
+  padding: 14px 16px !important;
+  color: #111827 !important;
+  background: transparent !important;
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: clamp(24px, 7vw, 36px) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link-active {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.mobile-menu-cms {
+  display: block !important;
+  width: min(100%, 320px) !important;
+  margin: 14px auto 0 !important;
+  border-radius: 999px !important;
+  padding: 14px 24px !important;
+  background: #111827 !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+}

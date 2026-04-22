@@ -1,4 +1,4 @@
-import { brandRoute, commentRoute, contactRoute, singleBrandRoute, videoRoute, visualCommRoute } from "../api"
+import { brandRoute, commentRoute, contactRoute, singleBrandRoute, singleVisualCommRoute, videoRoute, visualCommRoute } from "../api"
 
 export const getBrand = async () => {
     const res = await brandRoute()
@@ -23,4 +23,8 @@ export const getVideo = async () => {
 export const getVisualComm = async () => {
     const res = await visualCommRoute()
     return res?.data?.visuals
+}
+export const getSingleVisualComm = async (visualId) => {
+    const res = await singleVisualCommRoute(visualId)
+    return res?.data?.singleVisual
 }

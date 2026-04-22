@@ -6,9 +6,13 @@ import Home from './pages/Home';
 import BrandDesigning from './pages/BrandDesigning';
 import BrandDesignCard from './pages/BrandDesignCard';
 import VisualCommunication from './pages/VisualCommunication';
+import VisualCommunicationCard from './pages/VisualCommunicationCard';
 import Videos from './pages/Videos';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import CMSLogin from './pages/CMSLogin';
+import CMSDashboard from './pages/CMSDashboard';
+import CMSManager from './pages/CMSManager';
 
 function App() {
   return (
@@ -21,9 +25,13 @@ function App() {
             <Route path="/brand-designing" element={<BrandDesigning />} />
             <Route path="/brand-designing/:brandId" element={<BrandDesignCard />} />
             <Route path="/visual-communication" element={<VisualCommunication />} />
+            <Route path="/visual-communication/:visualId" element={<VisualCommunicationCard />} />
             <Route path="/videos" element={<Videos />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/cms/login" element={<CMSLogin />} />
+            <Route path="/cms" element={<CMSDashboard />} />
+            <Route path="/cms/manage/:type" element={<CMSManager />} />
           </Routes>
         </PageTransition>
         <Footer />

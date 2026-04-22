@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +19,13 @@ export default function Header() {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -60,6 +68,12 @@ export default function Header() {
                 />
               </Link>
             ))}
+            <Link
+              to="/cms/login"
+              className="rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 text-decoration-none"
+            >
+              CMS
+            </Link>
           </div>
 
           <button
@@ -72,27 +86,49 @@ export default function Header() {
         </div>
       </nav>
 
-      <div
-        className={`lg:hidden fixed inset-0 bg-white z-40 transition-all duration-500 ${
-          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-        style={{ top: '80px' }}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
+      {isMenuOpen &&
+        createPortal(
+          <div className="mobile-menu-overlay">
+            <div className="mobile-menu-bar">
+            <Link
+              to="/"
+              className="mobile-menu-logo"
+            >
+              Portfolio
+            </Link>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="mobile-menu-close"
+              aria-label="Close menu"
+            >
+              <X size={26} />
+            </button>
+          </div>
+
+          <div className="mobile-menu-links">
           {navLinks.map((link, index) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-3xl font-serif font-bold tracking-tight hover:opacity-70 transition-all duration-300 ${
-                isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              className={`mobile-menu-link ${
+                location.pathname === link.path ? 'mobile-menu-link-active' : ''
               }`}
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               {link.label}
             </Link>
           ))}
-        </div>
-      </div>
+          <Link
+            to="/cms/login"
+            className="mobile-menu-cms"
+            style={{ transitionDelay: `${navLinks.length * 50}ms` }}
+          >
+            CMS
+          </Link>
+          </div>
+          </div>,
+          document.body
+        )}
     </header>
   );
 }

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { getVisualCommHook } from "../hooks/fetchHook.js";
 interface Poster {
   _id: string;
@@ -9,7 +8,7 @@ interface Poster {
 }
 
 export default function VisualCommunication() {
-  const [selectedPoster, setSelectedPoster] = useState<Poster | null>(null);
+  const navigate = useNavigate();
   const posters = getVisualCommHook() as Poster[];
 
   return (
@@ -32,7 +31,7 @@ export default function VisualCommunication() {
             {posters.map((poster, index) => (
               <button
                 key={poster._id}
-                onClick={() => setSelectedPoster(poster)}
+                onClick={() => navigate(`/visual-communication/${poster._id}`)}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-all duration-500"
                 style={{
                   transitionDelay: `${index * 50}ms`,
@@ -76,38 +75,6 @@ export default function VisualCommunication() {
         </div>
       </section>
 
-      {selectedPoster && (
-        <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-6 animate-fadeIn"
-          onClick={() => setSelectedPoster(null)}
-        >
-          <button
-            onClick={() => setSelectedPoster(null)}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-white flex items-center justify-center hover:bg-white/20 transition-colors"
-          >
-            <X size={24} />
-          </button>
-
-          <div
-            className="relative max-w-4xl max-h-[90vh] flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={selectedPoster.image}
-              alt={selectedPoster.title}
-              className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
-            />
-            <div className="absolute -bottom-20 left-0 right-0 text-center">
-              <p className="text-white/60 text-sm mb-1">
-                {selectedPoster.category}
-              </p>
-              <h3 className="text-white text-2xl font-serif font-bold">
-                {selectedPoster.title}
-              </h3>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
