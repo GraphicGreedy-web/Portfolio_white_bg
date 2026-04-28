@@ -208,3 +208,58 @@ select:focus {
     transform: translateX(100%);
   }
 }
+
+.hero-startup-loader {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top, rgba(17, 24, 39, 0.08), transparent 42%),
+    #ffffff;
+  text-align: center;
+}
+
+.hero-startup-loader__mark {
+  width: 88px;
+  height: 88px;
+  border-radius: 999px;
+  border: 10px solid rgba(17, 24, 39, 0.08);
+  border-top-color: #111827;
+  animation: heroSpin 0.95s linear infinite;
+}
+
+.hero-startup-loader__eyebrow {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.hero-startup-loader__title {
+  margin: 0;
+  color: #111827;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(32px, 6vw, 58px);
+  font-weight: 800;
+  line-height: 1;
+}
+
+@keyframes heroSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.collection-loader-card {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.05), rgba(17, 24, 39, 0.02)),
+    #f3f4f6;
+}

@@ -30,11 +30,11 @@ export default function Home() {
       title: "Logo Design",
       description: "Distinctive logos that capture brand essence",
     },
-    {
-      icon: Layers,
-      title: "Brand Identity",
-      description: "Complete visual systems for cohesive brands",
-    },
+    // {
+    //   icon: Layers,
+    //   title: "Brand Identity",
+    //   description: "Complete visual systems for cohesive brands",
+    // },
     {
       icon: Film,
       title: "Visual Communication",
@@ -56,7 +56,7 @@ export default function Home() {
     brands[0] && {
       ...brands[0],
       image: brands[0].image,
-      link: `/brand-designing/${brands[0]._id}`,
+      link: `/logo-designing/${brands[0]._id}`,
     },
     visuals[0] && {
       ...visuals[0],
@@ -69,7 +69,15 @@ export default function Home() {
       link: videos[0].link || "/videos",
     },
   ].filter(Boolean);
-  if (!featuredWorks.length) return null   // or loader
+  if (!featuredWorks.length) {
+    return (
+      <div className="hero-startup-loader">
+        <div className="hero-startup-loader__mark" />
+        <p className="hero-startup-loader__eyebrow">Graphic Greedy</p>
+        <h1 className="hero-startup-loader__title">Loading portfolio</h1>
+      </div>
+    );
+  }
   console.log("feayres: ", featuredWorks);
   return (
     <div className="min-h-screen bg-white">
@@ -80,7 +88,7 @@ export default function Home() {
           }`}
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight leading-tight mb-6">
-            Graphic Designer
+            Graphic Greedy
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
             Creating premium visual experiences that elevate brands and
@@ -89,7 +97,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/brand-designing"
+              to="/logo-designing"
               className="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105 font-medium text-decoration-none"
             >
               View Portfolio
@@ -197,7 +205,7 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="inline-block px-8 py-4 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 font-medium"
+            className="underline-none inline-block px-8 py-4 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 font-medium"
           >
             Start a Project
           </Link>

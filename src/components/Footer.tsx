@@ -4,7 +4,7 @@ import { Instagram, Linkedin, Twitter, Mail } from 'lucide-react';
 export default function Footer() {
   const navigation = [
     { path: '/', label: 'Home' },
-    { path: '/brand-designing', label: 'Brand Designing' },
+    { path: '/logo-designing', label: 'Logo Designing' },
     { path: '/visual-communication', label: 'Visual Communication' },
     { path: '/videos', label: 'Videos' },
     { path: '/about', label: 'About Me' },
@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="lg:col-span-2">
             <h3 className="text-2xl lg:text-3xl font-serif font-bold mb-4">
-              Graphic Designer
+              Graphic Greedy
             </h3>
             <p className="text-gray-400 leading-relaxed max-w-md">
               Crafting premium visual identities and brand experiences for forward-thinking companies and creators.

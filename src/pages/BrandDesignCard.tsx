@@ -33,10 +33,10 @@ function BrandDesignCard() {
             Image not found
           </h1>
           <Link
-            to="/brand-designing"
+            to="/logo-designing"
             className="mt-6 inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
           >
-            Back to Brand Designing
+            Back to Logo Designing
           </Link>
         </div>
       </div>
@@ -47,10 +47,10 @@ function BrandDesignCard() {
     <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
       <div className="max-w-6xl mx-auto py-12 lg:py-16">
         <Link
-          to="/brand-designing"
+          to="/logo-designing"
           className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
         >
-          Back to Brand Designing
+          Back to Logo Designing
         </Link>
 
         <div className="mt-8 text-center">

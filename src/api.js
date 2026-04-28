@@ -14,6 +14,7 @@ export const updateBrandRoute = (brandId, payload) => api.patch(`/api/brands/${b
 export const deleteBrandRoute = (brandId) => api.delete(`/api/brands/${brandId}`, { headers: authHeaders() })
 export const commentRoute = () => api.get("/api/comments")
 export const contactRoute = () => api.get("/api/contacts")
+export const submitContactRoute = (payload) => api.post("/api/contacts", payload)
 export const videoRoute = () => api.get("/api/videos")
 export const createVideoRoute = (payload) => api.post("/api/videos", payload, { headers: authHeaders() })
 export const updateVideoRoute = (videoId, payload) => api.patch(`/api/videos/${videoId}`, payload, { headers: authHeaders() })

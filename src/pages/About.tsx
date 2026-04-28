@@ -2,7 +2,7 @@ import { Award, Users, Zap, Heart } from 'lucide-react';
 
 export default function About() {
   const skills = [
-    'Brand Identity Design',
+    // 'Brand Identity Design',
     'Logo Design',
     'Visual Communication',
    //'Typography',
@@ -55,7 +55,7 @@ export default function About() {
               </h1>
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  I'm a graphic designer specializing in brand identity, visual communication, and creative direction. With a passion for crafting distinctive visual experiences, I help brands tell their stories through thoughtful and strategic design.
+                  I'm a graphic designer specializing in visual communication, and creative direction. With a passion for crafting distinctive visual experiences, I help brands tell their stories through thoughtful and strategic design.
                 </p>
                 <p>
                   My approach combines timeless design principles with contemporary aesthetics, creating work that resonates with audiences and stands the test of time. Every project is an opportunity to push creative boundaries while maintaining clarity and purpose.

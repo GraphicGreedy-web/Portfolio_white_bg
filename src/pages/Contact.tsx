@@ -1,6 +1,17 @@
-import { Mail, Instagram, Linkedin, Twitter, Send } from 'lucide-react';
+import { Mail, Instagram, Linkedin, Twitter, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { FormEvent, useState } from 'react';
+import { submitContactRoute } from '../api';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    projectType: 'Logo Design',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+
   const contactInfo = [
     {
       icon: Mail,
@@ -28,9 +39,51 @@ export default function Contact() {
     },
   ];
 
+  const showToast = (type: 'success' | 'error', message: string) => {
+    setToast({ type, message });
+    window.clearTimeout((window as Window & { __contactToastTimer?: number }).__contactToastTimer);
+    (window as Window & { __contactToastTimer?: number }).__contactToastTimer = window.setTimeout(() => {
+      setToast(null);
+    }, 3500);
+  };
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const res = await submitContactRoute(formData);
+      if (res.data?.success) {
+        setFormData({
+          name: '',
+          email: '',
+          projectType: 'Logo Design',
+          message: '',
+        });
+        showToast('success', res.data.message);
+      } else {
+        showToast('error', res.data?.message || 'Could not send message.');
+      }
+    } catch (error: any) {
+      showToast('error', error?.response?.data?.message || 'Could not send message.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
-      <section className="py-16 lg:py-24 px-6 lg:px-12">
+      {toast && (
+        <div className={`fixed right-6 top-28 z-[90] flex items-center gap-3 rounded-2xl border px-4 py-3 shadow-xl ${
+          toast.type === 'success'
+            ? 'border-emerald-200 bg-emerald-50 text-emerald-900'
+            : 'border-red-200 bg-red-50 text-red-900'
+        }`}>
+          {toast.type === 'success' ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+          <p className="text-sm font-medium">{toast.message}</p>
+        </div>
+      )}
+      {/* <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl lg:text-7xl font-serif font-bold mb-6">
             Let's Connect
@@ -39,7 +92,7 @@ export default function Contact() {
             Have a project in mind or just want to chat about design? I'm always open to new opportunities and collaborations.
           </p>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-16 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
@@ -79,7 +132,7 @@ export default function Contact() {
               <h3 className="text-2xl font-serif font-bold mb-6">
                 Send a Message
               </h3>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Name
@@ -88,8 +141,11 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
+                    value={formData.name}
+                    onChange={(event) => setFormData({ ...formData, name: event.target.value })}
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none transition-colors"
                     placeholder="Your name"
+                    required
                   />
                 </div>
 
@@ -101,8 +157,11 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={(event) => setFormData({ ...formData, email: event.target.value })}
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none transition-colors"
                     placeholder="your@email.com"
+                    required
                   />
                 </div>
 
@@ -112,10 +171,11 @@ export default function Contact() {
                   </label>
                   <select
                     id="project"
-                    name="project"
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={(event) => setFormData({ ...formData, projectType: event.target.value })}
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none transition-colors"
                   >
-                    <option>Brand Design</option>
                     <option>Logo Design</option>
                     <option>Visual Communication</option>
                     <option>Video Production</option>
@@ -131,16 +191,20 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={6}
+                    value={formData.message}
+                    onChange={(event) => setFormData({ ...formData, message: event.target.value })}
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none transition-colors resize-none"
                     placeholder="Tell me about your project..."
+                    required
                   />
                 </div>
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-[1.02] font-medium flex items-center justify-center gap-2"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                   <Send size={18} />
                 </button>
               </form>
@@ -149,7 +213,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 px-6 lg:px-12 bg-gray-50">
+      {/* <section className="py-16 lg:py-24 px-6 lg:px-12 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
             Let's Work Together
@@ -159,7 +223,7 @@ export default function Contact() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="/brand-designing"
+              href="/logo-designing"
               className="px-6 py-3 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 transition-all duration-300 hover:scale-105 font-medium"
             >
               View Portfolio
@@ -172,7 +236,7 @@ export default function Contact() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

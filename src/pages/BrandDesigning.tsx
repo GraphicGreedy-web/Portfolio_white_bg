@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { getBrandHook } from "../hooks/fetchHook.js";
 import PortfolioMedia from "../components/PortfolioMedia";
+import CollectionLoader from "../components/CollectionLoader";
 interface Logo {
   _id: string;
   title: string;
@@ -14,12 +15,21 @@ interface Logo {
 export default function BrandDesigning() {
   const navigate = useNavigate();
   const logos: Logo[] = getBrandHook();
+  if (!logos.length) {
+    return (
+      <CollectionLoader
+        title="Logo Designing"
+        description="Crafting distinctive brand identities that resonate with audiences and stand the test of time."
+        cardClassName="aspect-square rounded-2xl"
+      />
+    );
+  }
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
       <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl lg:text-7xl font-serif font-bold mb-6">
-            Brand Designing
+            Logo Designing
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Crafting distinctive brand identities that resonate with audiences and stand the test of time. Every brand has a story—we help you tell it beautifully.
@@ -29,20 +39,20 @@ export default function BrandDesigning() {
 
       <section className="py-16 lg:py-24 px-6 lg:px-12 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h2 className="text-4xl lg:text-5xl font-serif font-bold mb-4">
-              Logo Design / Brand Identity
+              Logo Design
             </h2>
             <p className="text-gray-600 text-lg">
               Iconic marks that capture the essence of your brand
             </p>
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {logos.map((logo) => (
               <button
                 key={logo._id}
-                onClick={() => navigate(`/brand-designing/${logo._id}`)}
+                onClick={() => navigate(`/logo-designing/${logo._id}`)}
                 // onClick={() => setSelectedLogo(logo)}
                 className="group relative aspect-square rounded-2xl overflow-hidden bg-white border-2 border-gray-100 hover:border-gray-900 transition-all duration-500 hover:scale-[1.02]"
               >

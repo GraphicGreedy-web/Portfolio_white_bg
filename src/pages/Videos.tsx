@@ -1,6 +1,7 @@
 import { Play } from "lucide-react";
 import { getVideoHook } from "../hooks/fetchHook.js";
 import SmartImage from "../components/SmartImage";
+import CollectionLoader from "../components/CollectionLoader";
 interface Video {
   _id: string;
   title: string;
@@ -11,6 +12,16 @@ interface Video {
 }
 export default function Videos() {
   const videos = getVideoHook() as Video[];
+  if (!videos.length) {
+    return (
+      <CollectionLoader
+        title="Videos"
+        description="Cinematic storytelling through motion design, brand films, and video content that captivates and engages audiences."
+        cardClassName="aspect-video rounded-2xl"
+        count={6}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">

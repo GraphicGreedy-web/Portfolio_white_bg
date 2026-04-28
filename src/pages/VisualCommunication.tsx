@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { getVisualCommHook } from "../hooks/fetchHook.js";
 import SmartImage from "../components/SmartImage";
+import CollectionLoader from "../components/CollectionLoader";
 interface Poster {
   _id: string;
   title: string;
@@ -11,6 +12,15 @@ interface Poster {
 export default function VisualCommunication() {
   const navigate = useNavigate();
   const posters = getVisualCommHook() as Poster[];
+  if (!posters.length) {
+    return (
+      <CollectionLoader
+        title="Visual Communication"
+        description="Powerful visual narratives through posters, prints, and editorial design."
+        cardClassName="aspect-[3/4] rounded-2xl"
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
