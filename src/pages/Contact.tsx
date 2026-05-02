@@ -16,27 +16,27 @@ export default function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@designer.com',
-      href: 'mailto:hello@designer.com',
+      value: 'workwithgraphicgreedy@gmail.com',
+      href: 'mailto:workwithgraphicgreedy@gmail.com',
     },
     {
       icon: Instagram,
       label: 'Instagram',
-      value: '@designer',
+      value: '@graphic_greedy',
       href: 'https://instagram.com',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'Designer Name',
+      value: 'Graphic Greedy',
       href: 'https://linkedin.com',
     },
-    {
-      icon: Twitter,
-      label: 'Twitter',
-      value: '@designer',
-      href: 'https://twitter.com',
-    },
+    // {
+    //   icon: Twitter,
+    //   label: 'Twitter',
+    //   value: '@designer',
+    //   href: 'https://twitter.com',
+    // },
   ];
 
   const showToast = (type: 'success' | 'error', message: string) => {
