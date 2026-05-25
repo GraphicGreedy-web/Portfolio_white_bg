@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://graphicgreedyportfolio.vercel.app/videos</loc>
+    <lastmod>2026-04-28T03:20:38.219Z</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://res.cloudinary.com/dw7elrwuy/video/upload/c_fill,g_auto,h_720,w_1280/q_auto/v1/shree-portfolio/videos/1st-out.jpg?_a=BAMAK+WO0</video:thumbnail_loc>
+      <video:title><![CDATA[1st_out]]></video:title>
+      <video:description><![CDATA[1st_out from the Graphic Greedy video portfolio.]]></video:description>
+      <video:player_loc>https://res.cloudinary.com/dw7elrwuy/video/upload/v1777345528/shree-portfolio/videos/1st-out.mp4</video:player_loc>
+    </video:video>
+  </url>
+</urlset>

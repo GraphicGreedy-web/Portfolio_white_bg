@@ -3,6 +3,11 @@ import PortfolioMedia, {
   isInstagramPostUrl,
 } from "../components/PortfolioMedia";
 import { getSingleBrandHook } from "../hooks/fetchHook.js";
+import SEO, { noindexRobots } from "../components/SEO";
+import {
+  buildBreadcrumbSchema,
+  buildImageWorkSchema,
+} from "../seo/site";
 function BrandDesignCard() {
   const { brandId } = useParams();
   const singleBrand = getSingleBrandHook(brandId);
@@ -10,6 +15,12 @@ function BrandDesignCard() {
   if (singleBrand === undefined) {
     return (
       <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
+        <SEO
+          title="Logo Design Project"
+          description="Loading a logo design project from the Graphic Greedy portfolio."
+          path={brandId ? `/logo-designing/${brandId}` : "/logo-designing"}
+          robots={noindexRobots}
+        />
         <div className="max-w-5xl mx-auto py-16 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
             Brand Preview
@@ -25,6 +36,12 @@ function BrandDesignCard() {
   if (!singleBrand) {
     return (
       <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
+        <SEO
+          title="Logo Design Project Not Found"
+          description="This logo design project could not be found."
+          path={brandId ? `/logo-designing/${brandId}` : "/logo-designing"}
+          robots={noindexRobots}
+        />
         <div className="max-w-5xl mx-auto py-16 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
             Brand Preview
@@ -45,6 +62,28 @@ function BrandDesignCard() {
 
   return (
     <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
+      <SEO
+        title={`${singleBrand.title || "Logo Design"} Portfolio Project`}
+        description={`View ${singleBrand.title || "this logo design project"} from the Graphic Greedy logo design portfolio.`}
+        path={brandId ? `/logo-designing/${brandId}` : "/logo-designing"}
+        image={singleBrand.image}
+        schema={[
+          buildImageWorkSchema({
+            title: singleBrand.title || "Logo design project",
+            description: `Logo design project from the Graphic Greedy portfolio.`,
+            image: singleBrand.image,
+            path: brandId ? `/logo-designing/${brandId}` : "/logo-designing",
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Logo Designing", path: "/logo-designing" },
+            {
+              name: singleBrand.title || "Logo Design Project",
+              path: brandId ? `/logo-designing/${brandId}` : "/logo-designing",
+            },
+          ]),
+        ]}
+      />
       <div className="max-w-6xl mx-auto py-12 lg:py-16">
         <Link
           to="/logo-designing"

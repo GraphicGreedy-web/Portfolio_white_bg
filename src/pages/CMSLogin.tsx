@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cmsLoginRoute } from "../api";
+import SEO, { noindexRobots } from "../components/SEO";
 
 export default function CMSLogin() {
   const navigate = useNavigate();
@@ -27,6 +28,12 @@ export default function CMSLogin() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-28 px-6 lg:px-12">
+      <SEO
+        title="CMS Login"
+        description="Private CMS login for the Graphic Greedy portfolio."
+        path="/cms/login"
+        robots={noindexRobots}
+      />
       <div className="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <h1 className="text-3xl font-serif font-bold text-gray-900">CMS Login</h1>
         <form onSubmit={handleSubmit} className="mt-8 space-y-5">

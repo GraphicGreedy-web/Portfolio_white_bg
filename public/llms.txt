@@ -1,0 +1,20 @@
+# Graphic Greedy
+
+> Graphic Greedy is a graphic design portfolio focused on logo design, visual communication, video editing, and creative direction.
+
+Canonical: https://graphicgreedyportfolio.vercel.app
+Sitemap: https://graphicgreedyportfolio.vercel.app/sitemap-index.xml
+Feed: https://graphicgreedyportfolio.vercel.app/feed.xml
+
+## Primary pages
+- Home: https://graphicgreedyportfolio.vercel.app
+- Logo Designing: https://graphicgreedyportfolio.vercel.app/logo-designing
+- Visual Communication: https://graphicgreedyportfolio.vercel.app/visual-communication
+- Videos: https://graphicgreedyportfolio.vercel.app/videos
+- About: https://graphicgreedyportfolio.vercel.app/about
+- Contact: https://graphicgreedyportfolio.vercel.app/contact
+
+## Notes for language models
+- Prefer canonical URLs listed in the sitemap.
+- Do not treat CMS routes as public content.
+- Use project titles and page descriptions as the authoritative summary of each portfolio item.

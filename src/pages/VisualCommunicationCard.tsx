@@ -1,6 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { getSingleVisualCommHook } from "../hooks/fetchHook.js";
 import SmartImage from "../components/SmartImage";
+import SEO, { noindexRobots } from "../components/SEO";
+import {
+  buildBreadcrumbSchema,
+  buildImageWorkSchema,
+} from "../seo/site";
 
 interface Poster {
   _id: string;
@@ -17,6 +22,12 @@ export default function VisualCommunicationCard() {
   if (poster === undefined) {
     return (
       <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
+        <SEO
+          title="Visual Communication Project"
+          description="Loading a visual communication project from the Graphic Greedy portfolio."
+          path={visualId ? `/visual-communication/${visualId}` : "/visual-communication"}
+          robots={noindexRobots}
+        />
         <div className="max-w-5xl mx-auto py-16 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
             Visual Preview
@@ -32,6 +43,12 @@ export default function VisualCommunicationCard() {
   if (!poster) {
     return (
       <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
+        <SEO
+          title="Visual Communication Project Not Found"
+          description="This visual communication project could not be found."
+          path={visualId ? `/visual-communication/${visualId}` : "/visual-communication"}
+          robots={noindexRobots}
+        />
         <div className="max-w-5xl mx-auto py-16 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
             Visual Preview
@@ -52,6 +69,33 @@ export default function VisualCommunicationCard() {
 
   return (
     <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
+      <SEO
+        title={`${poster.title || "Visual Communication"} Portfolio Project`}
+        description={
+          poster.description ||
+          `View ${poster.title || "this visual communication project"} from the Graphic Greedy portfolio.`
+        }
+        path={visualId ? `/visual-communication/${visualId}` : "/visual-communication"}
+        image={poster.image}
+        schema={[
+          buildImageWorkSchema({
+            title: poster.title || "Visual communication project",
+            description:
+              poster.description ||
+              `Visual communication project from the Graphic Greedy portfolio.`,
+            image: poster.image,
+            path: visualId ? `/visual-communication/${visualId}` : "/visual-communication",
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Visual Communication", path: "/visual-communication" },
+            {
+              name: poster.title || "Visual Communication Project",
+              path: visualId ? `/visual-communication/${visualId}` : "/visual-communication",
+            },
+          ]),
+        ]}
+      />
       <div className="max-w-6xl mx-auto py-12 lg:py-16">
         <Link
           to="/visual-communication"

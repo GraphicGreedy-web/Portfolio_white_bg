@@ -17,10 +17,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+    { icon: Instagram, href: 'https://instagram.com/graphic_greedy', label: 'Instagram' },
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:hello@designer.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:workwithgraphicgreedy@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -73,7 +73,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Portfolio. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4" aria-label="Social links">
             {socialLinks.map((social) => (
               <a
                 key={social.label}

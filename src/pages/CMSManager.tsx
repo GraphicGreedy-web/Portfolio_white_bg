@@ -16,6 +16,7 @@ import {
   visualCommRoute,
 } from "../api";
 import SmartImage from "../components/SmartImage";
+import SEO, { noindexRobots } from "../components/SEO";
 
 type CmsType = "logos" | "visuals" | "videos";
 
@@ -258,6 +259,12 @@ export default function CMSManager() {
 
   return (
     <div className="min-h-screen bg-white pt-28 px-6 lg:px-12">
+      <SEO
+        title={pageTitle}
+        description={`Private CMS page for ${pageTitle.toLowerCase()}.`}
+        path={`/cms/manage/${cmsType}`}
+        robots={noindexRobots}
+      />
       <div className="mx-auto max-w-7xl">
         <Link
           to="/cms"

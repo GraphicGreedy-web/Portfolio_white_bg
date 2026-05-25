@@ -26,6 +26,8 @@ export default function SmartImage({
         <img
           {...props}
           alt={alt}
+          loading={props.loading || "lazy"}
+          decoding={props.decoding || "async"}
           className={`${className} image-loader-img ${
             isLoaded ? "image-loader-img-loaded" : ""
           }`}

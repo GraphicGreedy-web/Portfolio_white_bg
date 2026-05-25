@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /cms
+Disallow: /cms/
+
+Sitemap: https://graphicgreedyportfolio.vercel.app/sitemap-index.xml

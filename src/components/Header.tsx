@@ -42,7 +42,7 @@ export default function Header() {
         isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-15">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-15" aria-label="Primary">
         <div className="flex items-center justify-between h-20 lg:h-24">
           <Link
             to="/"
@@ -80,6 +80,8 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors text-decoration-none text-dark"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -88,7 +90,7 @@ export default function Header() {
 
       {isMenuOpen &&
         createPortal(
-          <div className="mobile-menu-overlay">
+          <div className="mobile-menu-overlay" id="mobile-navigation">
             <div className="mobile-menu-bar">
             <Link
               to="/"

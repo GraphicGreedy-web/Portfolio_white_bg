@@ -1,6 +1,11 @@
-import { Mail, Instagram, Linkedin, Twitter, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, Instagram, Linkedin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import { submitContactRoute } from '../api';
+import SEO from '../components/SEO';
+import {
+  buildBreadcrumbSchema,
+  buildContactPageSchema,
+} from '../seo/site';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -73,6 +78,19 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
+      <SEO
+        title="Contact Graphic Greedy"
+        description="Contact Graphic Greedy for logo design, visual communication, video editing, and creative direction projects."
+        path="/contact"
+        schema={[
+          buildContactPageSchema(),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
+      />
+      <h1 className="sr-only">Contact Graphic Greedy</h1>
       {toast && (
         <div className={`fixed right-6 top-28 z-[90] flex items-center gap-3 rounded-2xl border px-4 py-3 shadow-xl ${
           toast.type === 'success'

@@ -11,6 +11,14 @@ import {
 import { useState, useEffect } from "react";
 import { useFeatures } from "../hooks/variableHook.js";
 import PortfolioMedia from "../components/PortfolioMedia";
+import SEO from "../components/SEO";
+import {
+  buildBreadcrumbSchema,
+  buildCollectionSchema,
+  buildPersonSchema,
+  buildWebsiteSchema,
+  defaultKeywords,
+} from "../seo/site";
 export default function Home() {
   const { videos, brands, visuals } = useFeatures();
   const [isVisible, setIsVisible] = useState(false);
@@ -71,16 +79,52 @@ export default function Home() {
   ].filter(Boolean);
   if (!featuredWorks.length) {
     return (
-      <div className="hero-startup-loader">
-        <div className="hero-startup-loader__mark" />
-        <p className="hero-startup-loader__eyebrow">Graphic Greedy</p>
-        <h1 className="hero-startup-loader__title">Loading portfolio</h1>
-      </div>
+      <>
+        <SEO
+          title="Graphic Design Portfolio"
+          description="Graphic Greedy is a graphic design portfolio showcasing logo design, visual communication, video editing, creative direction, and performance marketing creatives."
+          path="/"
+          schema={[
+            buildWebsiteSchema(),
+            buildPersonSchema(),
+            buildCollectionSchema({
+              name: "Graphic Greedy Portfolio",
+              description:
+                "Graphic design portfolio featuring logo design, visual communication, and video editing projects.",
+              path: "/",
+              keywords: defaultKeywords,
+            }),
+            buildBreadcrumbSchema([{ name: "Home", path: "/" }]),
+          ]}
+        />
+        <div className="hero-startup-loader">
+          <div className="hero-startup-loader__mark" />
+          <p className="hero-startup-loader__eyebrow">Graphic Greedy</p>
+          <h1 className="hero-startup-loader__title">Loading portfolio</h1>
+        </div>
+      </>
     );
   }
   console.log("feayres: ", featuredWorks);
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Graphic Design Portfolio"
+        description="Graphic Greedy is a graphic design portfolio showcasing logo design, visual communication, video editing, creative direction, and performance marketing creatives."
+        path="/"
+        schema={[
+          buildWebsiteSchema(),
+          buildPersonSchema(),
+          buildCollectionSchema({
+            name: "Graphic Greedy Portfolio",
+            description:
+              "Graphic design portfolio featuring logo design, visual communication, and video editing projects.",
+            path: "/",
+            keywords: defaultKeywords,
+          }),
+          buildBreadcrumbSchema([{ name: "Home", path: "/" }]),
+        ]}
+      />
       <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-12">
         <div
           className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${

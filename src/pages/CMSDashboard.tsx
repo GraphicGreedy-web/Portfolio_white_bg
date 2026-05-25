@@ -1,4 +1,5 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import SEO, { noindexRobots } from "../components/SEO";
 
 const actions = [
   { label: "Manage Logos", path: "/cms/manage/logos" },
@@ -14,6 +15,12 @@ export default function CMSDashboard() {
 
   return (
     <div className="min-h-screen bg-white pt-28 px-6 lg:px-12">
+      <SEO
+        title="CMS Dashboard"
+        description="Private CMS dashboard for managing the Graphic Greedy portfolio."
+        path="/cms"
+        robots={noindexRobots}
+      />
       <div className="mx-auto max-w-5xl">
         <div className="flex items-center justify-between gap-4">
           <div>

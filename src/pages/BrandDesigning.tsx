@@ -2,6 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { getBrandHook } from "../hooks/fetchHook.js";
 import PortfolioMedia from "../components/PortfolioMedia";
 import CollectionLoader from "../components/CollectionLoader";
+import SEO from "../components/SEO";
+import {
+  buildBreadcrumbSchema,
+  buildCollectionSchema,
+} from "../seo/site";
 interface Logo {
   _id: string;
   title: string;
@@ -17,15 +22,63 @@ export default function BrandDesigning() {
   const logos: Logo[] = getBrandHook();
   if (!logos.length) {
     return (
-      <CollectionLoader
-        title="Logo Designing"
-        description="Crafting distinctive brand identities that resonate with audiences and stand the test of time."
-        cardClassName="aspect-square rounded-2xl"
-      />
+      <>
+        <SEO
+          title="Logo Designing Portfolio"
+          description="Explore Graphic Greedy's logo design portfolio featuring distinctive brand identity work, custom logo concepts, and strategic visual marks."
+          path="/logo-designing"
+          schema={[
+            buildCollectionSchema({
+              name: "Logo Designing Portfolio",
+              description:
+                "Logo design portfolio featuring brand identity work and custom logo design projects.",
+              path: "/logo-designing",
+              keywords: [
+                "logo design portfolio",
+                "brand identity design",
+                "custom logo designer",
+                "branding portfolio",
+              ],
+            }),
+            buildBreadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Logo Designing", path: "/logo-designing" },
+            ]),
+          ]}
+        />
+        <CollectionLoader
+          title="Logo Designing"
+          description="Crafting distinctive brand identities that resonate with audiences and stand the test of time."
+          cardClassName="aspect-square rounded-2xl"
+        />
+      </>
     );
   }
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
+      <SEO
+        title="Logo Designing Portfolio"
+        description="Explore Graphic Greedy's logo design portfolio featuring distinctive brand identity work, custom logo concepts, and strategic visual marks."
+        path="/logo-designing"
+        schema={[
+          buildCollectionSchema({
+            name: "Logo Designing Portfolio",
+            description:
+              "Logo design portfolio featuring brand identity work and custom logo design projects.",
+            path: "/logo-designing",
+            keywords: [
+              "logo design portfolio",
+              "brand identity design",
+              "custom logo designer",
+              "branding portfolio",
+            ],
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Logo Designing", path: "/logo-designing" },
+          ]),
+        ]}
+      />
       <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl lg:text-7xl font-serif font-bold mb-6">

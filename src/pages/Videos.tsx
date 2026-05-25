@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
 import { Play } from "lucide-react";
 import { getVideoHook } from "../hooks/fetchHook.js";
 import SmartImage from "../components/SmartImage";
 import CollectionLoader from "../components/CollectionLoader";
+import SEO from "../components/SEO";
+import {
+  buildBreadcrumbSchema,
+  buildVideoCollectionSchema,
+} from "../seo/site";
 interface Video {
   _id: string;
   title: string;
@@ -14,17 +20,49 @@ export default function Videos() {
   const videos = getVideoHook() as Video[];
   if (!videos.length) {
     return (
-      <CollectionLoader
-        title="Videos"
-        description="Cinematic storytelling through motion design, brand films, and video content that captivates and engages audiences."
-        cardClassName="aspect-video rounded-2xl"
-        count={6}
-      />
+      <>
+        <SEO
+          title="Video Editing Portfolio"
+          description="See video editing work from Graphic Greedy, including brand films, promotional edits, motion storytelling, and social media video content."
+          path="/videos"
+          schema={[
+            buildVideoCollectionSchema({ videos: [] }),
+            buildBreadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Videos", path: "/videos" },
+            ]),
+          ]}
+        />
+        <CollectionLoader
+          title="Videos"
+          description="Cinematic storytelling through motion design, brand films, and video content that captivates and engages audiences."
+          cardClassName="aspect-video rounded-2xl"
+          count={6}
+        />
+      </>
     );
   }
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
+      <SEO
+        title="Video Editing Portfolio"
+        description="See video editing work from Graphic Greedy, including brand films, promotional edits, motion storytelling, and social media video content."
+        path="/videos"
+        schema={[
+          buildVideoCollectionSchema({
+            videos: videos.map((video) => ({
+              title: video.title,
+              thumbnail: video.thumbnail,
+              link: video.link,
+            })),
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Videos", path: "/videos" },
+          ]),
+        ]}
+      />
       <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl lg:text-7xl font-serif font-bold mb-6">
@@ -110,12 +148,12 @@ export default function Videos() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="inline-block px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105 font-medium"
               >
                 Start a Video Project
-              </a>
+              </Link>
             </div>
             <div className="relative aspect-video rounded-2xl overflow-hidden">
               <SmartImage

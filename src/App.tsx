@@ -19,21 +19,23 @@ function App() {
     <Router>
       <div className="min-h-screen bg-white">
         <Header />
-        <PageTransition>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/logo-designing" element={<BrandDesigning />} />
-            <Route path="/logo-designing/:brandId" element={<BrandDesignCard />} />
-            <Route path="/visual-communication" element={<VisualCommunication />} />
-            <Route path="/visual-communication/:visualId" element={<VisualCommunicationCard />} />
-            <Route path="/videos" element={<Videos />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cms/login" element={<CMSLogin />} />
-            <Route path="/cms" element={<CMSDashboard />} />
-            <Route path="/cms/manage/:type" element={<CMSManager />} />
-          </Routes>
-        </PageTransition>
+        <main id="main-content">
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/logo-designing" element={<BrandDesigning />} />
+              <Route path="/logo-designing/:brandId" element={<BrandDesignCard />} />
+              <Route path="/visual-communication" element={<VisualCommunication />} />
+              <Route path="/visual-communication/:visualId" element={<VisualCommunicationCard />} />
+              <Route path="/videos" element={<Videos />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/cms/login" element={<CMSLogin />} />
+              <Route path="/cms" element={<CMSDashboard />} />
+              <Route path="/cms/manage/:type" element={<CMSManager />} />
+            </Routes>
+          </PageTransition>
+        </main>
         <Footer />
       </div>
     </Router>

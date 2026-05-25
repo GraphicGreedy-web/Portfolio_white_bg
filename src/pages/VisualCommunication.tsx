@@ -1,7 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getVisualCommHook } from "../hooks/fetchHook.js";
 import SmartImage from "../components/SmartImage";
 import CollectionLoader from "../components/CollectionLoader";
+import SEO from "../components/SEO";
+import {
+  buildBreadcrumbSchema,
+  buildCollectionSchema,
+} from "../seo/site";
 interface Poster {
   _id: string;
   title: string;
@@ -14,16 +19,64 @@ export default function VisualCommunication() {
   const posters = getVisualCommHook() as Poster[];
   if (!posters.length) {
     return (
-      <CollectionLoader
-        title="Visual Communication"
-        description="Powerful visual narratives through posters, prints, and editorial design."
-        cardClassName="aspect-[3/4] rounded-2xl"
-      />
+      <>
+        <SEO
+          title="Visual Communication Portfolio"
+          description="Browse visual communication work from Graphic Greedy, including poster design, print design, editorial layouts, and storytelling visuals."
+          path="/visual-communication"
+          schema={[
+            buildCollectionSchema({
+              name: "Visual Communication Portfolio",
+              description:
+                "Visual communication portfolio including poster design, editorial design, and print storytelling work.",
+              path: "/visual-communication",
+              keywords: [
+                "visual communication portfolio",
+                "poster design portfolio",
+                "editorial design",
+                "print design portfolio",
+              ],
+            }),
+            buildBreadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Visual Communication", path: "/visual-communication" },
+            ]),
+          ]}
+        />
+        <CollectionLoader
+          title="Visual Communication"
+          description="Powerful visual narratives through posters, prints, and editorial design."
+          cardClassName="aspect-[3/4] rounded-2xl"
+        />
+      </>
     );
   }
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
+      <SEO
+        title="Visual Communication Portfolio"
+        description="Browse visual communication work from Graphic Greedy, including poster design, print design, editorial layouts, and storytelling visuals."
+        path="/visual-communication"
+        schema={[
+          buildCollectionSchema({
+            name: "Visual Communication Portfolio",
+            description:
+              "Visual communication portfolio including poster design, editorial design, and print storytelling work.",
+            path: "/visual-communication",
+            keywords: [
+              "visual communication portfolio",
+              "poster design portfolio",
+              "editorial design",
+              "print design portfolio",
+            ],
+          }),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Visual Communication", path: "/visual-communication" },
+          ]),
+        ]}
+      />
       <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl lg:text-7xl font-serif font-bold mb-6">
@@ -77,12 +130,12 @@ export default function VisualCommunication() {
             Let's create compelling visuals that capture attention and
             communicate your message effectively.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block px-8 py-4 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 font-medium"
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
       </section>
 

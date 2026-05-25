@@ -1,4 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Award, Users, Zap, Heart } from 'lucide-react';
+import SEO from '../components/SEO';
+import {
+  buildBreadcrumbSchema,
+  buildPersonSchema,
+} from '../seo/site';
 
 export default function About() {
   const skills = [
@@ -46,6 +52,18 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
+      <SEO
+        title="About Graphic Greedy"
+        description="Learn about Graphic Greedy, a graphic designer specializing in logo design, visual communication, creative direction, performance marketing creatives, and video editing."
+        path="/about"
+        schema={[
+          buildPersonSchema(),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ]}
+      />
       <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -158,12 +176,12 @@ export default function About() {
           <p className="text-gray-400 mb-8 text-lg">
             Have a project in mind? I'd love to hear about it and explore how we can bring your vision to life.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block px-8 py-4 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 font-medium"
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
       </section>
     </div>
