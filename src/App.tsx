@@ -13,6 +13,7 @@ import Contact from './pages/Contact';
 import CMSLogin from './pages/CMSLogin';
 import CMSDashboard from './pages/CMSDashboard';
 import CMSManager from './pages/CMSManager';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -24,15 +25,16 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/logo-designing" element={<BrandDesigning />} />
-              <Route path="/logo-designing/:brandId" element={<BrandDesignCard />} />
+              <Route path="/logo-designing/:brandId/:slug?" element={<BrandDesignCard />} />
               <Route path="/visual-communication" element={<VisualCommunication />} />
-              <Route path="/visual-communication/:visualId" element={<VisualCommunicationCard />} />
+              <Route path="/visual-communication/:visualId/:slug?" element={<VisualCommunicationCard />} />
               <Route path="/videos" element={<Videos />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/cms/login" element={<CMSLogin />} />
               <Route path="/cms" element={<CMSDashboard />} />
               <Route path="/cms/manage/:type" element={<CMSManager />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>
         </main>

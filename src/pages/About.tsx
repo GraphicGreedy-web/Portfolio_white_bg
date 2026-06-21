@@ -3,6 +3,7 @@ import { Award, Users, Zap, Heart } from 'lucide-react';
 import SEO from '../components/SEO';
 import {
   buildBreadcrumbSchema,
+  buildOrganizationSchema,
   buildPersonSchema,
 } from '../seo/site';
 
@@ -57,6 +58,7 @@ export default function About() {
         description="Learn about Graphic Greedy, a graphic designer specializing in logo design, visual communication, creative direction, performance marketing creatives, and video editing."
         path="/about"
         schema={[
+          buildOrganizationSchema(),
           buildPersonSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },

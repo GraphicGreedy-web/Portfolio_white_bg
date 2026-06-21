@@ -5,6 +5,7 @@ import SEO, { noindexRobots } from "../components/SEO";
 import {
   buildBreadcrumbSchema,
   buildImageWorkSchema,
+  buildVisualPath,
 } from "../seo/site";
 
 interface Poster {
@@ -18,6 +19,12 @@ interface Poster {
 export default function VisualCommunicationCard() {
   const { visualId } = useParams();
   const poster = getSingleVisualCommHook(visualId) as Poster | null | undefined;
+  const canonicalPath =
+    visualId && poster?.title
+      ? buildVisualPath(visualId, poster.title)
+      : visualId
+        ? `/visual-communication/${visualId}`
+        : "/visual-communication";
 
   if (poster === undefined) {
     return (
@@ -73,25 +80,25 @@ export default function VisualCommunicationCard() {
         title={`${poster.title || "Visual Communication"} Portfolio Project`}
         description={
           poster.description ||
-          `View ${poster.title || "this visual communication project"} from the Graphic Greedy portfolio.`
+          `View ${poster.title || "this visual communication project"} from the Graphic Greedy portfolio, featuring poster design and visual storytelling work.`
         }
-        path={visualId ? `/visual-communication/${visualId}` : "/visual-communication"}
+        path={canonicalPath}
         image={poster.image}
         schema={[
           buildImageWorkSchema({
             title: poster.title || "Visual communication project",
             description:
               poster.description ||
-              `Visual communication project from the Graphic Greedy portfolio.`,
+              `${poster.title || "Visual communication project"} from the Graphic Greedy portfolio.`,
             image: poster.image,
-            path: visualId ? `/visual-communication/${visualId}` : "/visual-communication",
+            path: canonicalPath,
           }),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Visual Communication", path: "/visual-communication" },
             {
               name: poster.title || "Visual Communication Project",
-              path: visualId ? `/visual-communication/${visualId}` : "/visual-communication",
+              path: canonicalPath,
             },
           ]),
         ]}

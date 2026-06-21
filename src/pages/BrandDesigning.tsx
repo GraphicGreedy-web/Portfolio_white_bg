@@ -4,6 +4,7 @@ import PortfolioMedia from "../components/PortfolioMedia";
 import CollectionLoader from "../components/CollectionLoader";
 import SEO from "../components/SEO";
 import {
+  buildBrandPath,
   buildBreadcrumbSchema,
   buildCollectionSchema,
 } from "../seo/site";
@@ -24,7 +25,7 @@ export default function BrandDesigning() {
     return (
       <>
         <SEO
-          title="Logo Designing Portfolio"
+          title="Logo Design Portfolio"
           description="Explore Graphic Greedy's logo design portfolio featuring distinctive brand identity work, custom logo concepts, and strategic visual marks."
           path="/logo-designing"
           schema={[
@@ -57,7 +58,7 @@ export default function BrandDesigning() {
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
       <SEO
-        title="Logo Designing Portfolio"
+        title="Logo Design Portfolio"
         description="Explore Graphic Greedy's logo design portfolio featuring distinctive brand identity work, custom logo concepts, and strategic visual marks."
         path="/logo-designing"
         schema={[
@@ -85,7 +86,7 @@ export default function BrandDesigning() {
             Logo Designing
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Crafting distinctive brand identities that resonate with audiences and stand the test of time. Every brand has a story—we help you tell it beautifully.
+            Crafting distinctive brand identities that resonate with audiences and stand the test of time. Every brand has a story, and each logo is designed to communicate it clearly.
           </p>
         </div>
       </section>
@@ -105,7 +106,7 @@ export default function BrandDesigning() {
             {logos.map((logo) => (
               <button
                 key={logo._id}
-                onClick={() => navigate(`/logo-designing/${logo._id}`)}
+                onClick={() => navigate(buildBrandPath(logo._id, logo.title))}
                 // onClick={() => setSelectedLogo(logo)}
                 className="group relative aspect-square rounded-2xl overflow-hidden bg-white border-2 border-gray-100 hover:border-gray-900 transition-all duration-500 hover:scale-[1.02]"
               >

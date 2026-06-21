@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import {
   ChevronDown,
   Palette,
-  Layers,
   Film,
   TrendingUp,
   Video,
@@ -13,9 +12,12 @@ import { useFeatures } from "../hooks/variableHook.js";
 import PortfolioMedia from "../components/PortfolioMedia";
 import SEO from "../components/SEO";
 import {
+  buildBrandPath,
   buildBreadcrumbSchema,
   buildCollectionSchema,
+  buildOrganizationSchema,
   buildPersonSchema,
+  buildVisualPath,
   buildWebsiteSchema,
   defaultKeywords,
 } from "../seo/site";
@@ -64,12 +66,12 @@ export default function Home() {
     brands[0] && {
       ...brands[0],
       image: brands[0].image,
-      link: `/logo-designing/${brands[0]._id}`,
+      link: buildBrandPath(brands[0]._id, brands[0].title),
     },
     visuals[0] && {
       ...visuals[0],
       image: visuals[0].image,
-      link: `/visual-communication/${visuals[0]._id}`,
+      link: buildVisualPath(visuals[0]._id, visuals[0].title),
     },
     videos[0] && {
       ...videos[0],
@@ -86,6 +88,7 @@ export default function Home() {
           path="/"
           schema={[
             buildWebsiteSchema(),
+            buildOrganizationSchema(),
             buildPersonSchema(),
             buildCollectionSchema({
               name: "Graphic Greedy Portfolio",
@@ -105,7 +108,6 @@ export default function Home() {
       </>
     );
   }
-  console.log("feayres: ", featuredWorks);
   return (
     <div className="min-h-screen bg-white">
       <SEO
@@ -114,6 +116,7 @@ export default function Home() {
         path="/"
         schema={[
           buildWebsiteSchema(),
+          buildOrganizationSchema(),
           buildPersonSchema(),
           buildCollectionSchema({
             name: "Graphic Greedy Portfolio",

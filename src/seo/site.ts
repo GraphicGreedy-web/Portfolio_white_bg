@@ -1,6 +1,7 @@
 export const SITE_NAME = "Graphic Greedy";
 export const SITE_URL = "https://graphicgreedyportfolio.vercel.app";
 export const SITE_LOCALE = "en_IN";
+export const SITE_LANGUAGE = "en";
 export const SITE_DESCRIPTION =
   "Graphic Greedy is a graphic design portfolio for logo design, visual communication, brand storytelling, video editing, and creative direction.";
 export const SITE_EMAIL = "workwithgraphicgreedy@gmail.com";
@@ -8,6 +9,9 @@ export const SITE_SOCIAL_IMAGE = `${SITE_URL}/social-preview.svg`;
 export const DEFAULT_ROBOTS =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 export const NOINDEX_ROBOTS = "noindex, nofollow, noarchive, nosnippet";
+export const GOOGLE_SITE_VERIFICATION =
+  import.meta.env.VITE_GOOGLE_SITE_VERIFICATION || "";
+export const TWITTER_HANDLE = import.meta.env.VITE_TWITTER_HANDLE || "";
 
 export const defaultKeywords = [
   "graphic designer portfolio",
@@ -21,6 +25,21 @@ export const defaultKeywords = [
 
 export const buildCanonicalUrl = (path = "/") =>
   `${SITE_URL}${path === "/" ? "" : path}`;
+
+export const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-{2,}/g, "-");
+
+export const buildBrandPath = (brandId: string, title?: string) =>
+  `/logo-designing/${brandId}${title ? `/${toSlug(title)}` : ""}`;
+
+export const buildVisualPath = (visualId: string, title?: string) =>
+  `/visual-communication/${visualId}${title ? `/${toSlug(title)}` : ""}`;
 
 export type BreadcrumbItem = {
   name: string;
@@ -44,12 +63,32 @@ export const buildWebsiteSchema = () => ({
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  inLanguage: "en",
+  inLanguage: SITE_LANGUAGE,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
   publisher: {
-    "@type": "Person",
+    "@type": "Organization",
     name: SITE_NAME,
     email: SITE_EMAIL,
   },
+});
+
+export const buildOrganizationSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  email: SITE_EMAIL,
+  image: SITE_SOCIAL_IMAGE,
+  logo: SITE_SOCIAL_IMAGE,
+  sameAs: [
+    "https://instagram.com/graphic_greedy",
+    "https://linkedin.com",
+  ],
 });
 
 export const buildPersonSchema = () => ({
@@ -61,6 +100,7 @@ export const buildPersonSchema = () => ({
     "Graphic designer focused on logo design, visual communication, video editing, and creative direction.",
   email: SITE_EMAIL,
   url: SITE_URL,
+  image: SITE_SOCIAL_IMAGE,
 });
 
 export const buildCollectionSchema = ({

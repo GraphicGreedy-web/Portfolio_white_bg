@@ -5,12 +5,19 @@ import PortfolioMedia, {
 import { getSingleBrandHook } from "../hooks/fetchHook.js";
 import SEO, { noindexRobots } from "../components/SEO";
 import {
+  buildBrandPath,
   buildBreadcrumbSchema,
   buildImageWorkSchema,
 } from "../seo/site";
 function BrandDesignCard() {
   const { brandId } = useParams();
   const singleBrand = getSingleBrandHook(brandId);
+  const canonicalPath =
+    brandId && singleBrand?.title
+      ? buildBrandPath(brandId, singleBrand.title)
+      : brandId
+        ? `/logo-designing/${brandId}`
+        : "/logo-designing";
 
   if (singleBrand === undefined) {
     return (
@@ -64,22 +71,22 @@ function BrandDesignCard() {
     <div className="min-h-screen bg-white pt-24 px-6 lg:px-12">
       <SEO
         title={`${singleBrand.title || "Logo Design"} Portfolio Project`}
-        description={`View ${singleBrand.title || "this logo design project"} from the Graphic Greedy logo design portfolio.`}
-        path={brandId ? `/logo-designing/${brandId}` : "/logo-designing"}
+        description={`View ${singleBrand.title || "this logo design project"} from the Graphic Greedy logo design portfolio, including branding-focused visual identity work.`}
+        path={canonicalPath}
         image={singleBrand.image}
         schema={[
           buildImageWorkSchema({
             title: singleBrand.title || "Logo design project",
-            description: `Logo design project from the Graphic Greedy portfolio.`,
+            description: `${singleBrand.title || "Logo design project"} from the Graphic Greedy portfolio.`,
             image: singleBrand.image,
-            path: brandId ? `/logo-designing/${brandId}` : "/logo-designing",
+            path: canonicalPath,
           }),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Logo Designing", path: "/logo-designing" },
             {
               name: singleBrand.title || "Logo Design Project",
-              path: brandId ? `/logo-designing/${brandId}` : "/logo-designing",
+              path: canonicalPath,
             },
           ]),
         ]}

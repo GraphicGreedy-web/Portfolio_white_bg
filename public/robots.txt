@@ -3,4 +3,5 @@ Allow: /
 Disallow: /cms
 Disallow: /cms/
 
+Host: https://graphicgreedyportfolio.vercel.app
 Sitemap: https://graphicgreedyportfolio.vercel.app/sitemap-index.xml

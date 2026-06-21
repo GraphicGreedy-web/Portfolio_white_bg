@@ -2,4 +2,4 @@ Contact: mailto:workwithgraphicgreedy@gmail.com
 Canonical: https://graphicgreedyportfolio.vercel.app/.well-known/security.txt
 Preferred-Languages: en
 Policy: https://graphicgreedyportfolio.vercel.app/contact
-Expires: 2027-05-25T13:34:29Z
+Expires: 2027-06-20T03:33:18Z

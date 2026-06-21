@@ -5,6 +5,7 @@ import SEO from '../components/SEO';
 import {
   buildBreadcrumbSchema,
   buildContactPageSchema,
+  buildOrganizationSchema,
 } from '../seo/site';
 
 export default function Contact() {
@@ -83,6 +84,7 @@ export default function Contact() {
         description="Contact Graphic Greedy for logo design, visual communication, video editing, and creative direction projects."
         path="/contact"
         schema={[
+          buildOrganizationSchema(),
           buildContactPageSchema(),
           buildBreadcrumbSchema([
             { name: "Home", path: "/" },
@@ -147,9 +149,9 @@ export default function Contact() {
             </div>
 
             <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
-              <h3 className="text-2xl font-serif font-bold mb-6">
+              <h2 className="text-2xl font-serif font-bold mb-6">
                 Send a Message
-              </h3>
+              </h2>
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">

@@ -81,6 +81,17 @@ export default function Videos() {
             {videos.map((video, index) => (
               <button
                 key={video._id}
+                type="button"
+                onClick={() => {
+                  if (video.link) {
+                    window.open(video.link, "_blank", "noopener,noreferrer");
+                  }
+                }}
+                aria-label={
+                  video.link
+                    ? `Watch ${video.title}`
+                    : `${video.title} video preview`
+                }
                 className="group relative aspect-video rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-all duration-500"
                 style={{
                   transitionDelay: `${index * 50}ms`,

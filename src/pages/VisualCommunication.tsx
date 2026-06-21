@@ -6,6 +6,7 @@ import SEO from "../components/SEO";
 import {
   buildBreadcrumbSchema,
   buildCollectionSchema,
+  buildVisualPath,
 } from "../seo/site";
 interface Poster {
   _id: string;
@@ -95,7 +96,9 @@ export default function VisualCommunication() {
             {posters.map((poster, index) => (
               <button
                 key={poster._id}
-                onClick={() => navigate(`/visual-communication/${poster._id}`)}
+                onClick={() =>
+                  navigate(buildVisualPath(poster._id, poster.title))
+                }
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-all duration-500"
                 style={{
                   transitionDelay: `${index * 50}ms`,

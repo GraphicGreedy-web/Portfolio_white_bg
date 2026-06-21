@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import {
   buildCanonicalUrl,
   DEFAULT_ROBOTS,
+  GOOGLE_SITE_VERIFICATION,
   NOINDEX_ROBOTS,
   SITE_DESCRIPTION,
   SITE_LOCALE,
   SITE_NAME,
   SITE_SOCIAL_IMAGE,
   SITE_URL,
+  TWITTER_HANDLE,
 } from "../seo/site";
 
 type SeoProps = {
@@ -68,8 +70,21 @@ export default function SEO({
       description;
     ensureMetaTag('meta[name="robots"]', "name", "robots").content = robots;
     ensureMetaTag('meta[name="author"]', "name", "author").content = SITE_NAME;
+    ensureMetaTag('meta[name="language"]', "name", "language").content = "en";
     ensureMetaTag('meta[name="theme-color"]', "name", "theme-color").content =
       "#111827";
+    ensureMetaTag(
+      'meta[name="format-detection"]',
+      "name",
+      "format-detection"
+    ).content = "telephone=no";
+    if (GOOGLE_SITE_VERIFICATION) {
+      ensureMetaTag(
+        'meta[name="google-site-verification"]',
+        "name",
+        "google-site-verification"
+      ).content = GOOGLE_SITE_VERIFICATION;
+    }
     ensureMetaTag('meta[property="og:type"]', "property", "og:type").content = type;
     ensureMetaTag('meta[property="og:title"]', "property", "og:title").content =
       fullTitle;
@@ -92,8 +107,22 @@ export default function SEO({
     ).content = SITE_LOCALE;
     ensureMetaTag('meta[property="og:image"]', "property", "og:image").content =
       resolvedImage;
+    ensureMetaTag(
+      'meta[property="og:image:alt"]',
+      "property",
+      "og:image:alt"
+    ).content = fullTitle;
     ensureMetaTag('meta[name="twitter:card"]', "name", "twitter:card").content =
       "summary_large_image";
+    if (TWITTER_HANDLE) {
+      ensureMetaTag('meta[name="twitter:site"]', "name", "twitter:site").content =
+        TWITTER_HANDLE;
+      ensureMetaTag(
+        'meta[name="twitter:creator"]',
+        "name",
+        "twitter:creator"
+      ).content = TWITTER_HANDLE;
+    }
     ensureMetaTag(
       'meta[name="twitter:title"]',
       "name",
@@ -115,6 +144,8 @@ export default function SEO({
     ensureLinkTag("alternate").setAttribute("type", "application/rss+xml");
     ensureLinkTag("alternate").setAttribute("title", `${SITE_NAME} Updates`);
     ensureLinkTag("alternate").href = "/feed.xml";
+    ensureLinkTag("icon").href = "/favicon.svg";
+    ensureLinkTag("apple-touch-icon").href = "/icon-192.svg";
 
     const priorScripts = document.head.querySelectorAll(
       'script[data-managed-seo="true"]'
