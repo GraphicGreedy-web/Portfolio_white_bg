@@ -69,6 +69,12 @@ export default function Header() {
               </Link>
             ))}
             <Link
+              to="/blogs"
+              className="rounded-full border border-gray-300 px-5 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-900 hover:text-gray-900 text-decoration-none"
+            >
+              Blogs
+            </Link>
+            <Link
               to="/cms/login"
               className="rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 text-decoration-none"
             >
@@ -121,9 +127,16 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            to="/cms/login"
+            to="/blogs"
             className="mobile-menu-cms"
             style={{ transitionDelay: `${navLinks.length * 50}ms` }}
+          >
+            Blogs
+          </Link>
+          <Link
+            to="/cms/login"
+            className="mobile-menu-cms"
+            style={{ transitionDelay: `${(navLinks.length + 1) * 50}ms` }}
           >
             CMS
           </Link>

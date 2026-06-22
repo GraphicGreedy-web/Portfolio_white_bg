@@ -10,6 +10,7 @@ import VisualCommunicationCard from './pages/VisualCommunicationCard';
 import Videos from './pages/Videos';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Blogs from './pages/Blogs';
 import CMSLogin from './pages/CMSLogin';
 import CMSDashboard from './pages/CMSDashboard';
 import CMSManager from './pages/CMSManager';
@@ -31,6 +32,7 @@ function App() {
               <Route path="/videos" element={<Videos />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/blogs" element={<Blogs />} />
               <Route path="/cms/login" element={<CMSLogin />} />
               <Route path="/cms" element={<CMSDashboard />} />
               <Route path="/cms/manage/:type" element={<CMSManager />} />

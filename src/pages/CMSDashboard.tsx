@@ -5,6 +5,7 @@ const actions = [
   { label: "Manage Logos", path: "/cms/manage/logos" },
   { label: "Manage Visual Communication", path: "/cms/manage/visuals" },
   { label: "Manage Videos", path: "/cms/manage/videos" },
+  { label: "Manage Blogs", path: "/blogs" },
 ];
 
 export default function CMSDashboard() {
@@ -40,7 +41,7 @@ export default function CMSDashboard() {
           </button>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
           {actions.map((action) => (
             <Link
               key={action.path}

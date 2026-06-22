@@ -7,6 +7,7 @@ export default function Footer() {
     { path: '/logo-designing', label: 'Logo Designing' },
     { path: '/visual-communication', label: 'Visual Communication' },
     { path: '/videos', label: 'Videos' },
+    { path: '/blogs', label: 'Blogs' },
     { path: '/about', label: 'About Me' },
     { path: '/contact', label: 'Contact' },
   ];

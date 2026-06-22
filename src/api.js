@@ -7,6 +7,10 @@ const authHeaders = () => {
     const token = localStorage.getItem("cmsToken")
     return token ? { Authorization: `Bearer ${token}` } : {}
 }
+export const blogRoute = () => api.get("/api/blogs")
+export const createBlogRoute = (payload) => api.post("/api/blogs", payload, { headers: authHeaders() })
+export const updateBlogRoute = (blogId, payload) => api.patch(`/api/blogs/${blogId}`, payload, { headers: authHeaders() })
+export const deleteBlogRoute = (blogId) => api.delete(`/api/blogs/${blogId}`, { headers: authHeaders() })
 export const brandRoute = () => api.get("/api/brands")
 export const singleBrandRoute = (brandId) => api.get(`/api/brands/${brandId}`)
 export const createBrandRoute = (payload) => api.post("/api/brands", payload, { headers: authHeaders() })

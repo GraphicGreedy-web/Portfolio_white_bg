@@ -1,6 +1,13 @@
 import { useEffect } from "react";
-import { getBrand, getComment, getContact, getSingleBrand, getSingleVisualComm, getVideo, getVisualComm } from "../components/fetchRoutes";
+import { getBlog, getBrand, getComment, getContact, getSingleBrand, getSingleVisualComm, getVideo, getVisualComm } from "../components/fetchRoutes";
 import { useState } from "react";
+export const getBlogHook = () => {
+    const [blogs, setBlogs] = useState([]);
+    useEffect(() => {
+        getBlog().then(setBlogs);
+    }, []);
+    return blogs
+}
 export const getBrandHook = () => {
     const [brands, setBrands] = useState([]);
     useEffect(() => {
